@@ -1,0 +1,4 @@
+@ECHO OFF
+set AZURE_STORAGE_ACCOUNT=edgestreamio
+set AZURE_STORAGE_ACCESS_KEY=18xrwsfObxxZ6PqUCXNv6gx2kFwVfiQq9m+CgHQGcQ3CAkLHgiD4ieExpNVRnZjSnfzJ6V0krZbZJ1mjnrx6Qw==
+set DEBUG=true

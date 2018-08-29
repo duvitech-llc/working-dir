@@ -1,0 +1,16 @@
+{
+  "name": "transports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "azure-queue-transport.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "azure-storage": "^2.10.1",
+    "util": "^0.11.0",
+    "winston-transport": "^4.2.0"
+  }
+}

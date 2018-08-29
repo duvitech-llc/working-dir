@@ -1,0 +1,17 @@
+{
+  "name": "web-host",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.3",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "nodemon": "^1.18.3"
+  }
+}
