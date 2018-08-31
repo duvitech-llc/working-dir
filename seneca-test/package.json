@@ -11,6 +11,7 @@
   "dependencies": {
     "azure-storage": "^2.10.1",
     "debug": "^3.1.0",
+    "es-platform-logging": "^1.0.0",
     "express": "^4.16.3",
     "seneca": "^3.7.0",
     "uuid": "^3.3.2",

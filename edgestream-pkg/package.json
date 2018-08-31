@@ -1,0 +1,11 @@
+{
+  "name": "edgestream-pkg",
+  "version": "1.0.0",
+  "description": "Edgestream Platform Nodejs Package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "George Vigelette <george.vigelette@edgespace.com>",
+  "license": "ISC"
+}

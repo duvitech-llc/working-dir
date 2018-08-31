@@ -3,14 +3,10 @@ const uuid = require('uuid')
 const id = uuid.v1()
 var winston = require('winston');
 var seneca = require('seneca')();
-const debug = require('debug')('state-microservice')
+// const debug = require('debug')('state-microservice')
 const name = 'state-microservice'
 
-var esTransports = require('../edgestream/logging/transports/azure-queue-transport.js');
-
-debug('booting %s', name)
-debug('Identified by %s', id)
-
+var esTransports = require('es-platform-logging');
 var logging_options = {
     file: {
         level: 'info',
@@ -47,12 +43,12 @@ let logger = winston.createLogger({
             return `${info.timestamp} ${info.level}: ${info.message}`;
         })
     ),    
-    transports: [new esTransports()]
+    transports: [new esTransports.EdgestreamQueueTransport()]
 });
 
-logger.info('Hello world!', {timestamp: Date.now(), pid: process.pid});
+logger.info('Senexa Test Service Booting',  {pid: process.pid});
 
-debug('Creating NY Salestax');
+logger.info('Creating NY Salestax');
 var pattern_ny = { role: 'NY', cmd: 'salestax' };
 var action_ny = function (msg, done) {
     var rate = 0.08;
@@ -60,7 +56,7 @@ var action_ny = function (msg, done) {
     done( null, { total: total } );
  };
 
- debug('Creating FL Salestax');
+logger.info('Creating FL Salestax');
 var pattern_fl = { role: 'FL', cmd: 'salestax' };
 var action_fl = function (msg, done) {
     var rate = 0.04;
@@ -68,22 +64,22 @@ var action_fl = function (msg, done) {
     done( null, { total: total } );
  };
 
- debug('Adding NY Salestax');
+logger.info('Adding NY Salestax');
 seneca.add( pattern_ny, action_ny);
-debug('Adding FL Salestax');
+logger.info('Adding FL Salestax');
 seneca.add( pattern_fl, action_fl);
 
  //invoking the function
  
- debug('Testing NY Salestax');
+ logger.info('Testing NY Salestax');
  var message = {  role: 'NY', cmd: 'salestax', net: 150 };
  seneca.act( message, function (err, result) {
-    debug('NY Salestax Result for ' + message.net + ' is ' + result.total);
+    logger.info('NY Salestax Result for ' + message.net + ' is ' + result.total);
  } );
 
- debug('Testing FL Salestax');
+ logger.info('Testing FL Salestax');
  message = {  role: 'FL', cmd: 'salestax', net: 150 };
  seneca.act( message, function (err, result) {
-    debug('FL Salestax Result for ' + message.net + ' is ' + result.total);
+    logger.info('FL Salestax Result for ' + message.net + ' is ' + result.total);
  } );
  
